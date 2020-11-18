@@ -1,0 +1,10 @@
+*.DS_Store
+*.in
+*.out
+*.sh
+*.zip
+*.txt
+*.ret
+*.err
+*.tlog
+*.sol.tlog

@@ -1,0 +1,115 @@
+\documentclass[11.5pt,a4paper,oneside]{article}
+\usepackage{olympfa}
+\renewcommand{\contestname}{%
+فاینال -- تابستان بیست و نهمین دوره المپیاد کامپیوتر \\
+۱ شهریور ۱۳۹۸\\
+آزمون عملی سوم
+}
+\newcommand{\pass}{passwordforcontest}
+\newcommand{\computer}{userforcontest}
+
+\begin{document}
+\def\problemCode{kaj}
+\def\problemEnglishTitle{kaj}
+\def\problemFarsiTitle{کاج}
+\def\timeLimit{$3$ \second}
+\def\memLimit{$256$ \megabytes}
+
+\begin{problem}
+
+در شهر آبابوا به دنباله، امیرمحمد می‌گویند، هم‌چنین به دنباله‌هایی که به ازای هر 
+$i$
+که 
+1 < $a_i$
+حداقل یکی از دو عدد
+$a_i$
+و 
+$a_i-1$
+سمت چپ مکان
+$i$
+ظاهر نشده باشند، ایمانی می‌گویند. (منظور از سمت چپ، تمام خانه‌های قبل از خانه $i$ است، نه تنها خانه‌ی قبلی)
+\\
+مثلا
+ $<2, 2, 1>$ 
+ یک امیرمحمد ایمانی معتبر است و
+  $<1, 2, 2>$
+   یک امیرمحمد ایمانی معتبر نیست.
+\\
+اهالی شهر آبابوا به سوالی مهم برخورده‌اند و از شما درخواست کمک دارند:
+چند امیرمحمد ایمانی به طول
+$n$
+با اعداد
+$1$
+تا
+$m$
+داریم؟
+
+\inputDescription
+
+سطر اول وروی شامل دو عدد
+$n$
+و
+$m$
+است که
+$n$
+طول مورد‌نظر برای امیرمحمد ایمانی است
+و امیرمحمد ایمانی فقط می‌تواند شامل اعداد
+$1$
+تا
+$m$
+باشد.
+\\
+\outputDescription
+
+در خروجی باید تنها یک عدد چاپ کنید که جواب سوال مردم آبابوا است. از آنجا که این عدد می‌تواند خیلی بزرگ باشد باقی‌مانده آن بر $10^9 + 7$ را چاپ کنید.
+
+\constraints
+\begin{shortitems}
+\item $1 \le n, m \le 500$
+\end{shortitems}
+
+\subtasks
+
+\begin{subtasksTable}{|c|c|c|}
+\hline
+ \bf زیرمسئله   &   \bf نمره  &  \bf محدودیت‌ها  
+\\ \hline
+1 & $4$ & 
+$n, m \le 8$ 
+\\ \hline
+2 & $32$ & 
+$n, m \le 200$
+\\ \hline
+3 & $64$ &
+بدون محدودیت اضافی
+\\ \hline
+\end{subtasksTable}
+
+
+\sampleIO
+
+\begin{example}
+\exmp{%
+2 2
+}{%
+4
+}%
+\exmp{%
+3 2
+}{%
+6
+}%
+\end{example}
+
+\sampleIODescription
+
+در مثال اول، هر ۴ دنباله ممکن معتبر هستند.
+\\
+در مثال دوم، تنها ۲ دنباله
+$<1, 2, 2>$
+و
+$<2, 1, 2>$
+از ۸ حالت ممکن نامعتبر هستند، در نتیجه جواب برابر با ۶ است. 
+\end{problem}
+
+\end{document}
