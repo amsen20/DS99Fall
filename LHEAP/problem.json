@@ -1,0 +1,10 @@
+{
+	"name": "APM",
+	"code": "APM",
+	"title": "APM",
+	"type": "Batch",
+	"has_grader": false,
+	"time_limit": 1.5,
+	"memory_limit": 256,
+	"description": "amsen hackerearth contest"
+}
