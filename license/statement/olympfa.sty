@@ -1,0 +1,253 @@
+%
+% Macros for the contest problems
+% for MikTeX: use latex.exe
+% (C) Dmitry S. Lomov (SPb SU Training Centre), 2001-2002
+% (C) Kitten Computing [Andrew Lopatin & Nick Durov], 2001-2002,2003
+% (C) Andrew Stankevich (SPb IFMO Training Center), 2003
+% (C) Kian Mirjalali, INOI, 2015
+%
+
+\ProvidesPackage{olympfa}
+
+\usepackage{amssymb,amsmath}
+\usepackage[usenames,dvipsnames]{pstricks} 
+\usepackage{graphicx,epsfig}
+\usepackage{graphics}
+\usepackage{fancyhdr}
+\usepackage{xepersian}
+
+
+\setlength{\textwidth}{16cm}
+\setlength{\oddsidemargin}{0cm}
+\setlength{\textheight}{23cm}
+\setlength{\topmargin}{-16mm}
+\linespread{1.4}
+
+\pagestyle{fancyplain}
+
+\def\second{ثانیه}
+\def\seconds{ثانیه}
+\def\milliseconds{میلی‌ثانیه}
+\def\kilobytes{کیلوبایت}
+\def\megabytes{مگابایت}
+\def\gigabytes{گیگابایت}
+
+\long\def\comment#1{}
+\def\vstrut#1{\rule{0pt}{#1}}
+\def\nothing{\vstrut{0pt}}
+
+\def\pageNum{\RL{
+\thepage از \pageref{LastPage}
+}}
+\lhead{ \fancyplain{}{\problemCode} }
+\chead{ \fancyplain{}{\pageNum} }
+\rhead{ \fancyplain{}{\problemFarsiTitle} }
+\lfoot{ \fancyplain{}{} }
+\cfoot{ \fancyplain{\pageNum}{} }
+\rfoot{ \fancyplain{}{} }
+
+
+
+%---------- From package "lastpage" ------------------
+\def\lastpage@putlabel{\addtocounter{page}{-1}%
+   \immediate\write\@auxout{\string\newlabel{LastPage}{{}{\thepage}}}%
+   \addtocounter{page}{1}}
+\AtEndDocument{\clearpage\lastpage@putlabel}%
+%---------- end of "lastpage" ------------------
+
+
+\newlength{\exmpwidinf}
+\newlength{\exmpwidouf}
+\exmpwidinf=7cm
+\exmpwidouf=7cm
+\newlength{\exmpwidewid}
+\exmpwidewid=16cm
+\newlength{\afterproblemhead}
+\afterproblemhead=3mm
+\newlength{\afterconstraints}
+\afterconstraints=2mm
+
+\newcommand{\problemheadfont}{\LARGE}
+\newcommand{\problemsectionfont}{\Large}
+\newcommand{\problemend}{\clearpage}
+\newcommand{\problemtextfont}{\normalsize}
+\newcommand{\beforeproblemsectioncaption}{\smallbreak\smallskip}
+\newcommand{\afterproblemsectioncaption}{\vspace{-1mm}}
+
+
+
+% "shortitems" environment: it's a "compact itemize"
+%\def\shortitems{\vspace{-5.5mmplus2mm}\itemize\itemsep-1.618mmplus0.5mm\relax}%
+%\def\endshortitems{\vspace{0mmplus2mm}\enditemize\unskip}%
+\def\shortitems{\setlength{\parskip}{-1ex}\itemize\setlength{\parskip}{-1ex}\relax}%
+\def\endshortitems{\vspace{0mmplus2mm}\enditemize\unskip}%
+
+\newcounter{problem}
+\newcommand{\problemcaptionprefix}{}
+
+\def\problemCode{problemcode}
+\def\problemFarsiTitle{عنوان مسئله}
+\def\problemEnglishTitle{}
+
+\newenvironment{problem}{%
+{
+\clearpage
+\thispagestyle{plain}
+\vspace{5mm}
+{\noindent \Large \bf \contestname}
+\begin{flushleft}
+\nothing\\[-3.2cm]
+\includegraphics[height=3cm]{pics/inoi86.png}
+\end{flushleft}
+\vspace{-3mm}
+\noindent{\refstepcounter{problem}\bf\problemheadfont{\problemFarsiTitle \LR{(\problemCode)}}}%
+\hfill
+\LR{\problemEnglishTitle}
+\hrule
+\nopagebreak\par\vspace{\afterproblemhead}\problemtextfont\parindent=6.5mm%
+\vbox{%
+\bf
+    \begin{tabular}{r r}
+     محدودیت زمانی:
+        & \timeLimit  \\
+     محدودیت حافظه :
+     	 & \memLimit  \\
+    \end{tabular}
+}%
+}\nopagebreak\par\vspace{\afterconstraints}\problemtextfont%
+\newcommand{\Interaction}
+{\beforeproblemsectioncaption\noindent{\bf\problemsectionfont\textsf{Interaction protocol}}\nopagebreak\par\afterproblemsectioncaption}%
+\newcommand{\InputFile}
+{\beforeproblemsectioncaption\noindent{\bf\problemsectionfont\textsf{Input}}\nopagebreak\par\afterproblemsectioncaption
+}%
+\newcommand{\Example}
+{\beforeproblemsectioncaption\noindent{\bf\problemsectionfont\textsf{Sample input and output}}\nopagebreak\par\afterproblemsectioncaption\relax\smallskip}%
+\newcommand{\OutputFile}
+{\beforeproblemsectioncaption\noindent{\bf\problemsectionfont\textsf{Output}}\nopagebreak\par\afterproblemsectioncaption}%
+\newcommand{\InputFileName}{}%
+\newcommand{\OutputFileName}{}%
+}
+{\problemend}
+
+
+\def\s@tm@cr@s{%
+\def\widthin##1{\exmpwidinf=##1\relax}\def\widthout##1{\exmpwidouf=##1\relax}%
+\def\stretchin##1{\advance\exmpwidinf by ##1\relax}%
+\def\stretchout##1{\advance\exmpwidouf by ##1\relax}%
+\def\testst@r{\@ifstar{{\tt [*] is deprected, you need not use it any more}}{}}%
+}%
+
+\def\sampleInputHeading{ورودی استاندارد}
+\def\sampleOutputHeading{خروجی استاندارد}
+
+\newenvironment{example}[1][]{%
+\begin{LTR}\begin{center}
+\linespread{1}
+\s@tm@cr@s\ttfamily\obeylines\obeyspaces\frenchspacing\testst@r#1%
+\newcommand{\exmp}[2]{%
+\begin{minipage}[t]{\exmpwidinf}\rightskip=0pt plus 1fill\vstrut{12pt}\relax##1\medskip\end{minipage}&%
+\begin{minipage}[t]{\exmpwidouf}\rightskip=0pt plus 1fill\vstrut{12pt}\relax##2\medskip\end{minipage}\\%
+\hline}%
+\begin{tabular}{|l|l|}
+\hline
+\multicolumn{1}{|c|}{\rl{\bf\sampleInputHeading}}&%
+\multicolumn{1}{c|}{\rl{\bf\sampleOutputHeading}}\\%
+\hline
+}
+{\end{tabular}\end{center}\end{LTR}}
+
+\newenvironment{exampleoutin}[1][]{%
+\begin{LTR}\begin{center}
+\s@tm@cr@s\ttfamily\obeylines\obeyspaces\frenchspacing\testst@r#1%
+\newcommand{\exmp}[2]{%
+\begin{minipage}[t]{\exmpwidouf}\rightskip=0pt plus 1fill\relax\##1\medskip\end{minipage}&%
+\begin{minipage}[t]{\exmpwidinf}\rightskip=0pt plus 1fill\relax##2\medskip\end{minipage}\\%
+\hline}%
+\begin{tabular}{|l|l|}
+\hline
+\multicolumn{1}{|c|}{\bf\sampleOutputHeading}&%
+\multicolumn{1}{c|}{\bf\sampleInputHeading}\\%
+\hline
+}
+{\end{tabular}\end{center}\end{LTR}\nothing}
+
+\newenvironment{examplewide}[1][]{%
+\s@tm@cr@s\ttfamily\obeylines\obeyspaces\frenchspacing\testst@r#1%
+\newcommand{\exmp}[2]{%
+\begin{tabular}{|c|}
+\hline
+\multicolumn{1}{|c|}{\bf\sampleInputHeading}\\%
+\hline
+\begin{minipage}[t]{\exmpwidewid}\rightskip=0pt plus 1fill\relax
+##1
+\medskip\end{minipage}\\%
+\hline
+\multicolumn{1}{|c|}{\bf\sampleOutputHeading}\\%
+\hline
+\begin{minipage}[t]{\exmpwidewid}\rightskip=0pt plus 1fill\relax
+##2    
+\medskip\end{minipage}\\%
+\hline
+\end{tabular}
+}
+}{}
+
+\newcommand{\contestname}{آزمون المپیاد کامپیوتر}
+
+
+\setlength{\headheight}{2cm}
+\setlength{\headsep}{6mm}
+\hfuzz=0.5pt
+
+\parindent=5mm
+\parskip=1ex
+
+\binoppenalty=10000
+\relpenalty=10000
+
+\sloppy
+
+
+
+
+
+\settextfont[Scale=1]{XB Niloofar}
+\setdigitfont[Scale=1]{XB Niloofar}
+\setlength{\parskip}{.3em}
+
+\def\mysection#1{\section*{#1}}
+\def\mysubsection#1{\subsection*{#1}}
+\def\inputDescription{\mysection{ورودی}}
+\def\outputDescription{\mysection{خروجی}}
+\def\sampleGraderDescription{\mysection{ارزیاب نمونه}}
+\def\constraints{\mysection{محدودیت‌ها}}
+\def\subtasks{\mysubsection{زیرمسئله‌ها}}
+\def\sampleIO{\mysection{ورودی و خروجی نمونه}}
+\def\sampleIODescription{\mysubsection{شرح ورودی و خروجی نمونه}}
+
+\newenvironment{subtasksTable}[1]{
+\begin{center}\begin{tabular}{#1}%
+}{%
+\end{tabular}\end{center}%
+}
+
+\newenvironment{implementationDescription}{
+\newcommand{\declareFunction}[3]{
+\renewcommand\labelitemi{$\blacksquare$}
+\renewcommand\labelitemii{$\bullet$}
+\begin{itemize}
+\item{
+\colorbox{lightgray}{{\large{\lr{\texttt{##1}}}}}
+\\
+##2
+\begin{itemize}
+##3
+\end{itemize}
+}
+\end{itemize}
+}
+\newcommand{\parameter}[2] {
+\item \lr{##1}: ##2
+}
+\mysection{پیاده‌سازی}
+}{}

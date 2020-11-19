@@ -9,6 +9,7 @@ const int N = 3e5+100;
 int mx[N];
 
 signed main(){
+    ios_base::sync_with_stdio(false);
     int n, m;cin >> n >> m;
     while(n --){
         int l, r, c;cin >> l >> r >> c;l --;
