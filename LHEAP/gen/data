@@ -1,6 +1,22 @@
 @subtask full
 ok 5 10 -1 a
 nok 5 10 -1 a
+ok 3 3 -50 a
+ok 3 3 -50 b
+ok 4 4 -50 a
+ok 4 4 -50 b
+ok 5 5 -50 a
+ok 5 5 -50 b
+ok 6 6 -50 a
+ok 6 6 -50 b
+ok 7 7 -50 a
+ok 7 7 -50 b
+ok 8 8 -50 a
+ok 8 8 -50 b
+ok 9 9 -50 a
+ok 9 9 -50 b
+ok 10 10 -50 a
+ok 10 10 -50 b
 ok 1000 1000 -1
 ok 1000 1000 -5
 ok 1000 1000 -10
