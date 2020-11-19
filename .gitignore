@@ -8,3 +8,4 @@
 *.err
 *.tlog
 *.sol.tlog
+.vscode/*
