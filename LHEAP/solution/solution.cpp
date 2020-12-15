@@ -14,7 +14,7 @@ int main(){
         int left = (2*i <= n ? a[2*i] : 0);
         int right = (2*i+1 <= n ? a[2*i+1] : 0);
         if(a[i] == -1)
-            a[i] = max(left, right) + 1;
+            a[i] = max(left, right) + 1000;
         else if(a[i] <= max(left, right)){
             cout << "-1\n";
             return 0;
