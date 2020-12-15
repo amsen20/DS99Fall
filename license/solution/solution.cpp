@@ -25,6 +25,7 @@ signed main(){
         mx = max(mx, (int)st.size());
         int v = *st.begin();
         ans += v+1;
+        cerr << v+1 << " ** " << m << "\n";
         st.erase(v);
         for(auto u : vec[v])
             st.insert(u);
