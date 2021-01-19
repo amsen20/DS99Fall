@@ -9,4 +9,5 @@
 *.tlog
 *.sol.tlog
 *.exe
+*.out
 .vscode/*
