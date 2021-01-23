@@ -1,0 +1,10 @@
+{
+	"name": "FGIS",
+	"code": "FGIS",
+	"title": "FGIS",
+	"type": "Batch",
+	"has_grader": false,
+	"time_limit": 4.0,
+	"memory_limit": 256,
+	"description": "hackerearth contest"
+}
