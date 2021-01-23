@@ -20,8 +20,8 @@ signed main(){
     ll ans=0;
     set<int> st;
     st.insert(0);
-    int mx=0;
-    while(!st.empty() && m--){
+    int mx=0, it=1;
+    while(m-- && !st.empty()){
         mx = max(mx, (int)st.size());
         int v = *st.begin();
         ans += v+1;
