@@ -59,7 +59,7 @@ int main(int argc , char* argv[])
         ensuref(false, "invalid query");
     }
     mx = max(mx, sz);
-    ensuref(mx < 4e5, "too large string");
+    ensuref(mx < 1e5, "too large string");
     ensuref(mp['?'] <= 20, "too many ?");
     ensuref(mp['!'] <= 20, "too many !");
 	inf.readEof();

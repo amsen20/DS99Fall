@@ -64,7 +64,7 @@ bool valid(string exp){
 	for(int i=0 ; i<exp.size() ; i++){
 		if(exp[i] == '('){
 			st.push_back(i);
-			if(i<exp.size() && !is_dig(exp[i+1]) && exp[i+1] != '(')
+			if(i<exp.size()-1 && !is_dig(exp[i+1]) && exp[i+1] != '(')
 				return false;
 			if(!i || is_op(exp[i-1]) || exp[i-1] == '(')
 				continue;
@@ -74,7 +74,7 @@ bool valid(string exp){
 			if(st.empty() || st.back() == i-1)
 				return false;
 			st.pop_back();
-			if(i<exp.size() && !is_op(exp[i+1]) && exp[i+1] != ')')
+			if(i<exp.size()-1 && !is_op(exp[i+1]) && exp[i+1] != ')')
 				return false;
 			if(!i || is_dig(exp[i-1]) || exp[i-1] == ')')
 				continue;
@@ -154,8 +154,6 @@ signed main(){
 	list<char> ls;
 	ls.insert(ls.begin(), s.begin(), s.end());
 	auto it = ls.begin();
-    int sum=0;
-    int h = 1;
 	while(q --){
 		char op, ch;cin >> op;
 		string cur;
@@ -172,18 +170,12 @@ signed main(){
 			break;
 		case '-':
 			assert(ls.size());
-            for(auto it2 = it ; it2 != ls.end() ; it2++)
-                h *= *it;
-            sum += h;
 			if(it != ls.begin())
 				ls.erase(prev(it));
 			break;
 		case '+':
 			cin >> ch;
 			ls.insert(it, ch);
-            for(auto it2 = it ; it2 != ls.end() ; it2++)
-                h *= *it;
-            sum += h;
 			break;
 		case '?':
 			ls.insert(it, '|');
@@ -204,5 +196,4 @@ signed main(){
 			break;
 		}
 	}
-    cerr << sum << "\n";
 }
