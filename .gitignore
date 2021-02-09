@@ -10,4 +10,5 @@
 *.sol.tlog
 *.exe
 *.out
+*.pyc
 .vscode/*
